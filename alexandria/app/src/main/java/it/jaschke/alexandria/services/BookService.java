@@ -144,6 +144,10 @@ public class BookService extends IntentService {
 
         }
 
+        if (bookJsonString == null) {
+            return;
+        }
+
         final String ITEMS = "items";
 
         final String VOLUME_INFO = "volumeInfo";
