@@ -53,7 +53,8 @@ public class TodayWidgetIntentService extends IntentService {
 
 
         // Extract the match data from the Cursor
-        String description = "Descriptions~";
+        Utilies utilies = new Utilies(getApplicationContext());
+        String description = getResources().getString(R.string.widget_remote_content_description);
         int id = data.getInt(0);
         String date = data.getString(1);
         String time = data.getString(2);
@@ -80,9 +81,9 @@ public class TodayWidgetIntentService extends IntentService {
             views.setTextViewText(R.id.home_name, home);
             views.setTextViewText(R.id.away_name, away);
             views.setTextViewText(R.id.data_textview, time);
-            views.setTextViewText(R.id.score_textview, Utilies.getScores(homeGoals, awayGoals));
-            views.setImageViewResource(R.id.home_crest, Utilies.getTeamCrestByTeamName(home));
-            views.setImageViewResource(R.id.away_crest, Utilies.getTeamCrestByTeamName(away));
+            views.setTextViewText(R.id.score_textview, utilies.getScores(homeGoals, awayGoals));
+            views.setImageViewResource(R.id.home_crest, utilies.getTeamCrestByTeamName(home));
+            views.setImageViewResource(R.id.away_crest, utilies.getTeamCrestByTeamName(away));
 
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(this, MainActivity.class);
